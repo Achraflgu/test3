@@ -34,7 +34,7 @@ try {
 // Test 3: Check if tables exist
 echo "<h2>3. Tables Check</h2>";
 try {
-    $tables = ['products', 'brands', 'pcategories', 'blog', 'customers'];
+    $tables = ['products', 'brands', 'productcategories', 'blog', 'customers'];
     foreach ($tables as $table) {
         $stmt = $con->query("SELECT COUNT(*) as count FROM $table");
         $result = $stmt->fetch();

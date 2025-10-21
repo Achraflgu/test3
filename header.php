@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="assets/css/style-dark.css" rel="stylesheet" disabled>
+    <!-- Load jQuery first -->
+    <script src="assets/service/js/jquery.min.js"></script>
     <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.js"></script>
       <script src="assets/js/respond.min.js"></script>

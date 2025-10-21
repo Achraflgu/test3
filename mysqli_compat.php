@@ -128,5 +128,104 @@ if (!defined('MYSQLI_ASSOC')) define('MYSQLI_ASSOC', PDO::FETCH_ASSOC);
 if (!defined('MYSQLI_NUM')) define('MYSQLI_NUM', PDO::FETCH_NUM);
 if (!defined('MYSQLI_BOTH')) define('MYSQLI_BOTH', PDO::FETCH_BOTH);
 
+/**
+ * Extend PDOStatement to add mysqli-style properties and methods
+ */
+class MySQLiResultWrapper {
+    private $pdoStatement;
+    
+    public function __construct($pdoStatement) {
+        $this->pdoStatement = $pdoStatement;
+    }
+    
+    public function __get($name) {
+        if ($name === 'num_rows') {
+            return $this->pdoStatement->rowCount();
+        }
+        return null;
+    }
+    
+    public function fetch_assoc() {
+        return $this->pdoStatement->fetch(PDO::FETCH_ASSOC);
+    }
+    
+    public function fetch_array($type = MYSQLI_BOTH) {
+        if ($type === MYSQLI_ASSOC) {
+            return $this->pdoStatement->fetch(PDO::FETCH_ASSOC);
+        } elseif ($type === MYSQLI_NUM) {
+            return $this->pdoStatement->fetch(PDO::FETCH_NUM);
+        } else {
+            return $this->pdoStatement->fetch(PDO::FETCH_BOTH);
+        }
+    }
+    
+    public function __call($method, $args) {
+        // Forward all other method calls to PDOStatement
+        return call_user_func_array([$this->pdoStatement, $method], $args);
+    }
+}
+
+// Override $con->query to return wrapped results
+$original_con = $con;
+$con = new class($original_con) {
+    private $pdo;
+    
+    public function __construct($pdo) {
+        $this->pdo = $pdo;
+    }
+    
+    public function query($sql) {
+        $result = $this->pdo->query($sql);
+        if ($result) {
+            return new MySQLiResultWrapper($result);
+        }
+        return false;
+    }
+    
+    public function __call($method, $args) {
+        return call_user_func_array([$this->pdo, $method], $args);
+    }
+    
+    public function __get($name) {
+        return $this->pdo->$name;
+    }
+    
+    public function __set($name, $value) {
+        $this->pdo->$name = $value;
+    }
+};
+
+// Also wrap $conn if it exists (for compatibility with different variable names)
+if (isset($conn)) {
+    $original_conn = $conn;
+    $conn = new class($original_conn) {
+        private $pdo;
+        
+        public function __construct($pdo) {
+            $this->pdo = $pdo;
+        }
+        
+        public function query($sql) {
+            $result = $this->pdo->query($sql);
+            if ($result) {
+                return new MySQLiResultWrapper($result);
+            }
+            return false;
+        }
+        
+        public function __call($method, $args) {
+            return call_user_func_array([$this->pdo, $method], $args);
+        }
+        
+        public function __get($name) {
+            return $this->pdo->$name;
+        }
+        
+        public function __set($name, $value) {
+            $this->pdo->$name = $value;
+        }
+    };
+}
+
 ?>
 
