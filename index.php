@@ -600,8 +600,10 @@ if ($result->num_rows > 0) {
 <?php
 $sql = "SELECT * FROM products WHERE sale_start_date <= CURDATE() AND sale_end_date >= CURDATE() AND product_status='1'ORDER BY RAND() LIMIT 1";
 $result = $conn->query($sql);
-if ($result->num_rows > 0) {
+$has_deal = false;
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $has_deal = true;
         $product_name = $row['product_name'];
         $product_id = $row['product_id'];
         $product_price = $row['product_price'];
@@ -611,10 +613,9 @@ if ($result->num_rows > 0) {
         $product_photo_2 = $row['product_photo_1'];
         $sale_end_date = $row['sale_end_date']; 
     }
-} else {
-    echo "No deal available.";
 }
 ?>
+<?php if ($has_deal) : ?>
 <style>
     /* CSS for countdown */
     .countdown-style {
@@ -684,6 +685,7 @@ if ($result->num_rows > 0) {
         }
     }, 1000); 
 </script>
+<?php endif; // End deal check ?>
 <!-- Testimonial #7
 ============================================= -->
 <section id="testimonial7" class="testimonial testimonial-7 text-center pb-140 pb-60-xs">
