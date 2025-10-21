@@ -1,0 +1,15 @@
+# Copy these to Railway Environment Variables
+# Railway Dashboard → Your Project → Variables Tab
+
+DB_HOST=ep-green-forest-ag0gs7i6-pooler.c-2.eu-central-1.aws.neon.tech
+DB_PORT=5432
+DB_NAME=neondb
+DB_USER=neondb_owner
+DB_PASSWORD=npg_3qhtrFepc5wj
+DATABASE_URL=postgresql://neondb_owner:npg_3qhtrFepc5wj@ep-green-forest-ag0gs7i6-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require
+PGHOST=ep-green-forest-ag0gs7i6-pooler.c-2.eu-central-1.aws.neon.tech
+PGUSER=neondb_owner
+PGDATABASE=neondb
+PGPASSWORD=npg_3qhtrFepc5wj
+PGPORT=5432
+
