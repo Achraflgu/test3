@@ -34,11 +34,15 @@ try {
 // Test 3: Check if tables exist
 echo "<h2>3. Tables Check</h2>";
 try {
-    $tables = ['products', 'brands', 'productcategories', 'blog', 'customers'];
+    $tables = ['products', 'brands', 'productcategories', 'blog', 'customers', 'sliders', 'gallery'];
     foreach ($tables as $table) {
-        $stmt = $con->query("SELECT COUNT(*) as count FROM $table");
-        $result = $stmt->fetch();
-        echo "✅ Table '$table': " . $result['count'] . " rows<br>";
+        try {
+            $stmt = $con->query("SELECT COUNT(*) as count FROM $table");
+            $result = $stmt->fetch();
+            echo "✅ Table '$table': " . $result['count'] . " rows<br>";
+        } catch (Exception $e) {
+            echo "⚠️ Table '$table': " . $e->getMessage() . "<br>";
+        }
     }
 } catch (Exception $e) {
     echo "❌ Error checking tables: " . $e->getMessage() . "<br>";

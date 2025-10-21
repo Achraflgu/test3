@@ -16,12 +16,13 @@ include("nav.php");
 $sql = "SELECT * FROM sliders ORDER BY slider_order ASC";
 $result = $conn->query($sql);
 $sliders = [];
-if ($result->num_rows > 0) {
+if ($result && $result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $sliders[] = $row;
     }
 }
 ?>
+<?php if (!empty($sliders)) : ?>
 <div class="slider slider-15">
     <div id="rev_slider_15_1_wrapper" class="text-center rev_slider_wrapper fullscreen-container" data-alias="hebes-home-15" data-source="gallery" style="background:transparent;padding:0px;">
         <div id="rev_slider_15_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.7">
@@ -156,6 +157,7 @@ if ($result->num_rows > 0) {
         }; /* END OF ON LOAD FUNCTION */
     }()); /* END OF WRAPPING FUNCTION */
 </script>
+<?php endif; // End sliders check ?>
 <!-- about #1
 ============================================= -->
 <section id="about1" class="about about-1 pt-140 pt-60-xs pb-120 pb-60-xs">
