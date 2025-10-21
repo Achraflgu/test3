@@ -12,7 +12,6 @@ include("nav.php");
 <link rel="stylesheet" href="assets/service/css/nice-select.css">
 <link rel="stylesheet" href="assets/service/css/comman.css">
 <link rel="stylesheet" href="assets/service/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
     #footerParallax {
         z-index: 1;
@@ -509,10 +508,8 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 </div>
-<script src="assets/service/js/jquery.min.js"></script>
 <script src="assets/service/js/SmoothScroll.min.js"></script>
 <script src="assets/service/js/nice-select.min.js"></script>
-<script src="assets/service/js/swiper.min.js"></script>
 <script src="assets/service/js/wow.min.js"></script>
 <script src="assets/service/js/tilt.js"></script>
 <script src="assets/service/js/jquery.magnific-popup.min.js"></script>
