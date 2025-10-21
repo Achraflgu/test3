@@ -21,7 +21,17 @@ if (!$database_url) {
 }
 
 if (!$database_url) {
-    die("DATABASE_URL environment variable not set");
+    die("
+    <h1>❌ DATABASE_URL Not Set</h1>
+    <p>Please set the DATABASE_URL environment variable in Railway:</p>
+    <ol>
+        <li>Go to Railway Dashboard</li>
+        <li>Click on your project</li>
+        <li>Go to Variables tab</li>
+        <li>Add: DATABASE_URL=postgresql://neondb_owner:npg_3qhtrFepc5wj@ep-green-forest-ag0gs7i6-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require</li>
+        <li>Save and redeploy</li>
+    </ol>
+    ");
 }
 
 try {
