@@ -1,0 +1,40 @@
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Composer
+/vendor/
+composer.lock
+
+# Admin uploads
+/admin/uploads/*
+!/admin/uploads/.gitkeep
+
+# Logs
+*.log
+error_log
+debug.log
+
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.cache
+
+# Railway
+.railway/
+

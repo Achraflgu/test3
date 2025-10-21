@@ -1,0 +1,23 @@
+<svg id="Logo" xmlns="http://www.w3.org/2000/svg" width="216" height="50" viewBox="0 0 216 50">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 90px;
+        fill: #222;
+        font-family: "Cormorant Garamond";
+        font-weight: 700;
+      }
+
+      .cls-2 {
+        fill: #fd5c7f;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="Text">
+    <text id="Multifarious" class="cls-1" transform="translate(59.106 35.959) scale(0.319)">Multifarious</text>
+  </g>
+  <g id="Icon">
+    <path id="Icon-2" data-name="Icon" class="cls-2" d="M25,0A25,25,0,1,0,50,25,25,25,0,0,0,25,0Zm9.09,27.494v7.744H28.14l2.472-3.217V24.713l-5.756,8.178H24.807L19.268,25.24v6.627l2.591,3.372h-5.95V14.76h0.025l8.945,12.686L34.041,14.76H34.09V27.495Z"/>
+  </g>
+</svg>

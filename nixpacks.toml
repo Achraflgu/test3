@@ -1,0 +1,10 @@
+# Nixpacks configuration for Railway deployment
+[phases.setup]
+nixPkgs = ['php82', 'php82Extensions.pdo', 'php82Extensions.pdo_pgsql', 'php82Extensions.mbstring', 'php82Extensions.gd', 'php82Extensions.zip', 'nginx']
+
+[phases.install]
+cmds = ['composer install --no-dev --optimize-autoloader 2>/dev/null || echo "No composer.json found"']
+
+[start]
+cmd = 'php -S 0.0.0.0:$PORT -t .'
+
