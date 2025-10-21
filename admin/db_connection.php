@@ -48,4 +48,7 @@ try {
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }
+
+// Include mysqli compatibility layer for old code
+require_once __DIR__ . '/../mysqli_compat.php';
 ?>
