@@ -25,6 +25,29 @@
     <link href="assets/css/style-dark.css" rel="stylesheet" disabled>
     <!-- Load jQuery first -->
     <script src="assets/service/js/jquery.min.js"></script>
+    <!-- Load Swiper JS -->
+    <script src="assets/service/js/swiper.min.js"></script>
+    <!-- Revolution Slider Fallback -->
+    <script>
+        // Fallback function if Revolution Slider is not available
+        window.revslider_showDoubleJqueryError = function(sliderID) {
+            console.warn('Revolution Slider not loaded for: ' + sliderID);
+            // Hide the slider and remove loader
+            jQuery(sliderID).closest('.slider').hide();
+        };
+        
+        // Hide preloader when page is loaded
+        jQuery(window).on('load', function() {
+            jQuery('.preloader').fadeOut(500);
+        });
+        
+        // Fallback: Hide preloader after 3 seconds if not already hidden
+        setTimeout(function() {
+            if (jQuery('.preloader').is(':visible')) {
+                jQuery('.preloader').fadeOut(500);
+            }
+        }, 3000);
+    </script>
     <!-- Load Revolution Slider JS files -->
     <script src="assets/revolution/js/jquery.themepunch.tools.min.js"></script>
     <script src="assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
